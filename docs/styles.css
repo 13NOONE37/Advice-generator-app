@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+
+:root {
+  --light__cyan: hsl(193, 38%, 86%);
+  --neon_green: hsl(150, 100%, 66%);
+  --grayish__blue: hsl(217, 19%, 38%);
+  --dark__grayish__blue: hsl(217, 19%, 24%);
+  --dark__blue: hsl(218, 23%, 16%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  font-size: 26px;
+  font-family: 'Manrope', sans-serif;
+  background-color: var(--dark__blue);
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  width: calc(100% - 32px);
+  min-height: 332px;
+
+  border-radius: 12px;
+  background-color: var(--dark__grayish__blue);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 44px 28px;
+  padding-bottom: 64px;
+
+  position: relative;
+
+  box-shadow: 10px 10px 40px 0 rgba(0, 0, 0, 0.1);
+}
+.card__id {
+  color: var(--neon_green);
+  font-size: 0.45em;
+  letter-spacing: 4px;
+}
+.card__advice {
+  color: var(--light__cyan);
+  font-size: 1em;
+  text-align: center;
+}
+.card__divider {
+  width: 100%;
+  max-width: 295px;
+  height: 16px;
+
+  background-image: url('./images/pattern-divider-mobile.svg');
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.card__dice {
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--neon_green);
+
+  transition: all 0.1s ease-in-out;
+
+  display: grid;
+  place-items: center;
+}
+.card__dice:hover,
+.card__dice:focus {
+  box-shadow: 0 0 25px 10px hsla(150, 100%, 66%, 0.25);
+}
+
+.loading {
+  animation: dice_animation 0.8s infinite linear forwards;
+}
+
+@keyframes dice_animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media only screen and (min-width: 572px) {
+  body {
+    font-size: 28px;
+  }
+  .card {
+    width: 540px;
+    gap: 36px;
+
+    padding: 52px 48px;
+    padding-bottom: 72px;
+  }
+  .card__divider {
+    width: 444px;
+    background-image: url('./images/pattern-divider-desktop.svg');
+  }
+}
